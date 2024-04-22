@@ -5,7 +5,7 @@ const {
   revenue,
   users,
 } = require('../app/lib/placeholder-data.js');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 async function seedUsers(client) {
   try {
@@ -161,7 +161,10 @@ async function seedRevenue(client) {
 }
 
 async function main() {
+  console.log('not connected')
   const client = await db.connect();
+
+  console.log('connected', client)
 
   await seedUsers(client);
   await seedCustomers(client);
